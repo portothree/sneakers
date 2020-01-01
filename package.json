@@ -1,5 +1,6 @@
 {
   "name": "portosneakers",
+  "description": "Selling the hottest sneakers",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
