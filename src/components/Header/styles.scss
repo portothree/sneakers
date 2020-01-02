@@ -1,0 +1,35 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+
+	@media (max-width: 320px) {
+		flex-direction: column;
+	}
+
+	&__cart {
+		display: flex;
+		color: #fff;
+	}
+
+	&__cart-info {
+		display: flex;
+		flex-direction: column;
+		width: 70px;
+
+		strong {
+			font-size: 18px;
+		}
+
+		span {
+			color: #a7a9be;
+			font-size: 16px;
+		}
+	}
+
+	&__cart-logo {
+		width: 40px;
+		height: 40px;
+	}
+}
