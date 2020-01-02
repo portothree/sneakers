@@ -8,9 +8,23 @@
 		flex-direction: column;
 	}
 
+	&__logo {
+		transition: opacity 0.2s;
+
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+
 	&__cart {
 		display: flex;
 		color: #fff;
+		text-decoration: none;
+		transition: opacity 0.2s;
+
+		&:hover {
+			opacity: 0.7;
+		}
 	}
 
 	&__cart-info {

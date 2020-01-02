@@ -11,11 +11,14 @@
 }
 
 .item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	background-color: #fff;
-	width: 180px;
-	height: 225px;
+	width: 200px;
+	height: 270px;
 	border-radius: 4px;
-	text-align: center;
+	padding: 10px;
 
 	&__photo {
 		width: 150px;
@@ -29,9 +32,54 @@
 	&__title {
 		font-size: 16px;
 		font-weight: 300;
+		text-align: center;
 	}
 
 	&__price {
 		font-weight: 900;
+	}
+
+	&__button {
+		position: relative;
+		background-color: #ff8906;
+		width: 120px;
+		height: 35px;
+		border: none;
+		border-radius: 4px;
+		margin: 10px 0;
+		cursor: pointer;
+		text-transform: uppercase;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-image: url('../../assets/cart.svg');
+			background-position: 3px center;
+			background-repeat: no-repeat;
+			background-size: 12px 15px;
+			background-color: #ec7c00;
+			width: 30px;
+			height: 100%;
+			border-radius: 4px 0px 0px 4px;
+		}
+	}
+
+	&__action {
+		position: absolute;
+		right: 7.5px;
+		top: 6.5px;
+		color: #fff;
+		font-weight: 700;
+		font-size: 12px;
+	}
+
+	&__qty {
+		position: absolute;
+		left: 17px;
+		top: 6.5px;
+		font-size: 12px;
+		color: #fff;
 	}
 }

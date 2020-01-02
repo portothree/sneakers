@@ -1,5 +1,6 @@
 import React from 'react';
 
+import cart from '../../assets/cart.svg';
 import productPhoto from '../../assets/beluga.jpg';
 
 import './style.scss';
@@ -14,6 +15,11 @@ export default function Catalog() {
 					<strong className="item__vendor">Adidas</strong>
 					<h2 className="item__title">Yeezy Boost 350 V2 Beluga 2.0</h2>
 					<span className="item__price">€299,90</span>
+
+					<button className="item__button" type="button">
+						<span className="item__qty">1</span>
+						<span className="item__action">Add to cart</span>
+					</button>
 				</div>
 			</div>
 		</main>

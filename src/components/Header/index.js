@@ -9,17 +9,17 @@ import cart from '../../assets/cart.svg';
 export default function Header() {
 	return (
 		<header className="header">
-			<Link to="/">
+			<Link to="/" className="header__logo">
 				<img src={logo} alt="Sneakers logo" />
 			</Link>
 
-			<div className="header__cart">
+			<Link to="/cart" className="header__cart">
 				<div className="header__cart-info">
 					<strong>My cart</strong>
 					<span>3 items</span>
 				</div>
 				<img className="header__cart-logo" src={cart} alt="Cart icon" />
-			</div>
+			</Link>
 		</header>
 	);
 }
