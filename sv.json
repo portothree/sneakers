@@ -1,0 +1,12 @@
+{
+	"stock": [{ "id": 1, "amount": 2 }],
+	"products": [
+		{
+			"id": 1,
+			"title": "Yeezy Boost 350 V2 Beluga 2.0",
+			"vendor": "adidas",
+			"price": 399.9,
+			"image": "https://i.imgur.com/CHsvbr5.jpg"
+		}
+	]
+}
