@@ -1,4 +1,8 @@
 import { createStore, combineReducers } from 'redux';
+import Reactotron from '../cfg/ReactotronCfg';
+
+const enhancer =
+	process.env.NODE_ENV === 'development' ? Reactotron.createEnhancer() : null;
 
 const initialState = [];
 
@@ -16,6 +20,6 @@ const rootReducer = combineReducers({
 	cart,
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, enhancer);
 
 export default store;
