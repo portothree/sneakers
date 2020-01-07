@@ -1,10 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './styles.scss';
-import productPhoto from '../../assets/beluga.jpg';
 import trashcan from '../../assets/trash-can.svg';
 
-export default function Cart() {
+function Cart(props) {
 	return (
 		<main className="order-details">
 			<table className="order-details__table">
@@ -20,39 +20,40 @@ export default function Cart() {
 				</thead>
 
 				<tbody>
-					<tr>
-						<td>
-							<img
-								className="order-details__photo"
-								src={productPhoto}
-								alt="Gray sneaker"
-							/>
-						</td>
-						<td className="order-details__productname">
-							Yeezy Boost 350 V2 Beluga 2.0
-						</td>
-						<td>
-							<strong>€299,90</strong>
-						</td>
-						<td>
-							<label className="screen-reader-only" htmlFor="productqty">
-								Quantity
-							</label>
-							<input
-								className="order-details__qty"
-								id="productqty"
-								type="number"
-							/>
-						</td>
-						<td>
-							<strong>€899,70</strong>
-						</td>
-						<td>
-							<button className="order-details__delete">
-								<img src={trashcan} alt="Trash Can" />
-							</button>
-						</td>
-					</tr>
+					{props.cart.map(item => (
+						<tr key={item.id}>
+							<td>
+								<img
+									className="order-details__photo"
+									src={item.image}
+									alt={item.title}
+								/>
+							</td>
+							<td className="order-details__productname">{item.title}</td>
+							<td>
+								<strong>{item.formattedPrice}</strong>
+							</td>
+							<td>
+								<label className="screen-reader-only" htmlFor="productqty">
+									Quantity
+								</label>
+								<input
+									className="order-details__qty"
+									id="productqty"
+									type="number"
+									value={item.qty}
+								/>
+							</td>
+							<td>
+								<strong>€899,70</strong>
+							</td>
+							<td>
+								<button className="order-details__delete">
+									<img src={trashcan} alt="Trash Can" />
+								</button>
+							</td>
+						</tr>
+					))}
 				</tbody>
 			</table>
 
@@ -66,3 +67,9 @@ export default function Cart() {
 		</main>
 	);
 }
+
+const mapStateToProps = state => ({
+	cart: state.cart,
+});
+
+export default connect(mapStateToProps)(Cart);
