@@ -42,7 +42,6 @@ export default function Cart() {
 								className="order-details__qty"
 								id="productqty"
 								type="number"
-								value="3"
 							/>
 						</td>
 						<td>
