@@ -36,11 +36,7 @@ class Catalog extends Component {
 				<div className="catalog__items">
 					{items.map(item => (
 						<div key={item.id} className="item">
-							<img
-								className="item__photo"
-								src={item.image}
-								alt="Gray sneaker"
-							/>
+							<img className="item__photo" src={item.image} alt={item.title} />
 							<strong className="item__vendor">{item.vendor}</strong>
 							<h2 className="item__title">{item.title}</h2>
 							<span className="item__price">{item.formattedPrice}</span>
