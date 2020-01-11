@@ -5,6 +5,9 @@ import './styles.scss';
 import trashcan from '../../assets/trash-can.svg';
 
 function Cart(props) {
+	/**
+	 *	props.cart is populated through the redux store mapStateToProps
+	 */
 	return (
 		<main className="order-details">
 			<table className="order-details__table">

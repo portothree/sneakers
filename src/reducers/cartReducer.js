@@ -2,6 +2,10 @@ import produce from 'immer';
 
 import initialState from './initialState';
 
+/*
+ * Takes an empty array as initial state
+ */
+
 export default function cart(state = initialState.cart, action) {
 	switch (action.type) {
 		case 'ADD_TO_CART':

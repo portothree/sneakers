@@ -28,6 +28,9 @@ class Catalog extends Component {
 	};
 
 	render() {
+		/**
+		 * this.props.items is populated through the redux store and mapStateToProps
+		 */
 		const { items } = this.state;
 
 		return (
