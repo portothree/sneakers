@@ -38,6 +38,11 @@
 		font-weight: 300;
 	}
 
+	&__change-qty {
+		border: none;
+		background-color: #fff;
+	}
+
 	&__qty {
 		appearance: textfield;
 		text-align: center;
