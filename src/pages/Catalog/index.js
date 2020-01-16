@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from '../../actions/cartActions';
 
@@ -7,57 +7,59 @@ import { formatCurrency } from '../../helpers/intl';
 
 import './style.scss';
 
-class Catalog extends Component {
-	state = {
-		items: [],
-	};
+function Catalog(props) {
+	const [items, setItems] = useState([]);
 
-	async componentDidMount() {
-		const response = await api.get('items');
+	useEffect(() => {
+		async function fetchData() {
+			const response = await api.get('items');
 
-		const data = response.data.map(item => ({
-			...item,
-			formattedPrice: formatCurrency.format(item.price),
-		}));
+			const data = response.data.map(item => ({
+				...item,
+				formattedPrice: formatCurrency(item.price, 'pt-PT', 'EUR'),
+			}));
 
-		this.setState({ items: data });
-	}
+			setItems(data);
+		}
 
-	handleAddToCart = item => {
-		this.props.dispatch(addToCart(item));
-	};
+		fetchData();
+	}, []);
 
-	render() {
-		/**
-		 * this.props.items is populated through the redux store and mapStateToProps
-		 */
-		const { items } = this.state;
+	/**
+	 * props.addToCart is populated through mapDispathToProps
+	 */
+	const { addToCart } = props;
 
-		return (
-			<main className="catalog">
-				<h1 className="catalog__title">Catalog</h1>
-				<div className="catalog__items">
-					{items.map(item => (
-						<div key={item.id} className="item">
-							<img className="item__photo" src={item.image} alt={item.title} />
-							<strong className="item__vendor">{item.vendor}</strong>
-							<h2 className="item__title">{item.title}</h2>
-							<span className="item__price">{item.formattedPrice}</span>
+	return (
+		<main className="catalog">
+			<h1 className="catalog__title">Catalog</h1>
+			<div className="catalog__items">
+				{items.map(item => (
+					<div key={item.id} className="item">
+						<img className="item__photo" src={item.image} alt={item.title} />
+						<strong className="item__vendor">{item.vendor}</strong>
+						<h2 className="item__title">{item.title}</h2>
+						<span className="item__price">{item.formattedPrice}</span>
 
-							<button
-								className="item__button"
-								type="button"
-								onClick={() => this.handleAddToCart(item)}
-							>
-								<span className="item__qty">1</span>
-								<span className="item__action">Add to cart</span>
-							</button>
-						</div>
-					))}
-				</div>
-			</main>
-		);
-	}
+						<button
+							className="item__button"
+							type="button"
+							onClick={() => addToCart(item)}
+						>
+							<span className="item__qty">1</span>
+							<span className="item__action">Add to cart</span>
+						</button>
+					</div>
+				))}
+			</div>
+		</main>
+	);
 }
 
-export default connect()(Catalog);
+const mapDispathToProps = dispatch => {
+	return {
+		addToCart: item => dispatch(addToCart(item)),
+	};
+};
+
+export default connect(null, mapDispathToProps)(Catalog);
